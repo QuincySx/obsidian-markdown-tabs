@@ -1,9 +1,9 @@
 {
-	"id": "obsidian-markdown-tabbed",
-	"name": "Obsidian Markdown Tabbed",
+	"id": "obsidian-markdown-tabs",
+	"name": "Obsidian Markdown Tabs",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "This plugin enhances markdown syntax in Obsidian to allow for toggling between tabs within a markdown preview. It adds new syntax for defining and using tabs, making it easy to organize and display content in a more structured way.",
+	"description": "Adds tabbed markdown support to Obsidian",
 	"author": "QuincySx",
 	"authorUrl": "https://obsidian.md",
 	"fundingUrl": "https://obsidian.md/pricing",
