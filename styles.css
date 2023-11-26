@@ -1,8 +1,81 @@
-/*
+body {
+	--tab-background-default:  var(--color-base-20); /* 默认选项卡背景色 */
+	--tab-background-hover:  var(--color-base-30); /* 鼠标悬停时的背景色 */
+	--tab-color-default: var(--tab-text-color); /* 默认文字颜色 */
+	--tab-color-hover:  var(--tab-text-color-focused); /* 鼠标悬停时的文字颜色 */
+	--tab-color-active:  var(--tab-text-color-active); /* 活动选项卡的文字颜色 */
+	--tab-border-color: var(--color-base-25); /* 选项卡的边框颜色 */
+	--tab-content-background: var(--color-base-00); /* 内容区域的背景色 */
+	--tab-content-color: var(--text-normal); /* 内容区域的文字颜色 */
+	--tab-border-width: var(--border-width); /* 新增边框宽度变量 */
+	--tab-border-radius: var(--radius-m); /* 选项卡的边角圆度 */
+	--tab-padding: var(--size-4-3) var(--size-4-5); /* 选项卡的内边距 */
+	--tab-font-size: var(--size-4-4); /* 文字大小 */
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.md-tabbed-tabs {
+	display: flex;
+	flex-wrap: nowrap;
+	max-width: 95%;
+	overflow-x: auto; /* 横向滚动 */
+    white-space: nowrap;
+	padding-left: var(--tab-padding);
+	scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    &::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+}
 
-If your plugin does not need CSS, delete this file.
+.md-tabbed-tab {
+	flex-shrink: 0;
+	padding: var(--tab-padding);
+	font-size: var(--tab-font-size);
+	cursor: pointer;
+	color: var(--tab-color-default);
+	background-color: var(--tab-background-default);
+	border-bottom: var(--tab-border-width) solid var(--tab-border-color);
+	border-right: var(--tab-border-width) solid var(--tab-border-color);
+	border-top: var(--tab-border-width) solid var(--tab-border-color);
+}
 
-*/
+.md-tabbed-tab:first-child {
+	border-left: var(--tab-border-width) solid var(--tab-border-color);
+	border-top-left-radius: var(--tab-border-radius);
+}
+
+.md-tabbed-tab:last-child {
+	border-top-right-radius: var(--tab-border-radius);
+}
+
+.md-tabbed-tab p {
+	margin-top: var(--size-4-1);
+	margin-bottom: var(--size-4-1);
+	line-height: 1.2;
+}
+
+.md-tabbed-tab:hover {
+	color: var(--tab-color-hover);
+}
+
+.md-tabbed-active {
+	overflow: hidden;
+	cursor: default;
+	background-color: var(--tab-content-background);
+	color: var(--tab-color-active);
+	border-bottom: 0px;
+}
+
+.md-tabbed-content {
+	margin-top: -1px;
+	padding: var(--tab-padding);
+	background-color: var(--tab-content-background);
+	color: var(--tab-content-color);
+	border-top: var(--tab-border-width) solid var(--tab-border-color);
+	border-left: var(--tab-border-width) solid var(--tab-border-color);
+	border-right: var(--tab-border-width) solid var(--tab-border-color);
+	border-bottom: var(--tab-border-width) solid var(--tab-border-color);
+	border-bottom-left-radius: var(--tab-border-radius);
+	border-bottom-right-radius: var(--tab-border-radius);
+	border-top-right-radius: var(--tab-border-radius);
+}
