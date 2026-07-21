@@ -35,12 +35,6 @@ jobs:
             manifest.json
             styles.css
 
-      - name: Package files
-        run: |
-          mkdir tabbed-blocks
-          cp main.js manifest.json styles.css tabbed-blocks/
-          zip -r release.zip tabbed-blocks
-
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,4 +44,4 @@ jobs:
             --title="$tag" \
             --draft \
             --generate-notes \
-            release.zip main.js manifest.json styles.css
+            main.js manifest.json styles.css
