@@ -15,7 +15,7 @@ const TABS_TEMPLATE = [
 ].join("\n");
 
 export default class MDTabbedPlugin extends Plugin {
-	async onload() {
+	onload() {
 		this.registerMarkdownCodeBlockProcessor(
 			"tabs",
 			async (source, el, ctx) => {

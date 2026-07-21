@@ -19,12 +19,10 @@ body {
 	overflow-x: auto; /* 横向滚动 */
 	white-space: nowrap;
 	cursor: grab;
-	scrollbar-width: none; /* Firefox */
-	-ms-overflow-style: none; /* IE and Edge */
 }
 
 .md-tabbed-tabs::-webkit-scrollbar {
-	display: none; /* Chrome, Safari, Opera */
+	display: none; /* Obsidian 均为 Chromium 内核 */
 }
 
 .md-tabbed-tabs:active {

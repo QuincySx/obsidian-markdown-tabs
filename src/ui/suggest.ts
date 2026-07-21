@@ -67,7 +67,7 @@ export class TabSuggest extends EditorSuggest<TabSuggestion> {
 function insideTabsBlock(editor: Editor, cursor: EditorPosition): boolean {
 	let inside = false;
 	for (let l = 0; l < cursor.line; l++) {
-		const t = editor.getLine(l).trimStart();
+		const t: string = editor.getLine(l).replace(/^\s+/, "");
 		if (!inside) {
 			if (/^```tabs\b/.test(t)) inside = true;
 		} else if (t.startsWith("```")) {
