@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-markdown-tabs",
-	"name": "Obsidian Markdown Tabs",
+	"id": "markdown-tabs",
+	"name": "Markdown Tabs",
 	"version": "1.0.0",
 	"minAppVersion": "1.1.0",
-	"description": "Adds tabbed markdown support to Obsidian",
+	"description": "Show Markdown content in switchable tabs.",
 	"author": "QuincySx",
-	"authorUrl": "",
+	"authorUrl": "https://github.com/QuincySx",
 	"isDesktopOnly": false
 }
