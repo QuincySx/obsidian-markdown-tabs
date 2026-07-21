@@ -51,7 +51,7 @@ export class TabSuggest extends EditorSuggest<TabSuggestion> {
 	}
 
 	renderSuggestion(s: TabSuggestion, el: HTMLElement): void {
-		el.createEl("div", { text: s.display });
+		el.createDiv({ text: s.display });
 		el.createEl("small", { text: s.detail, cls: "md-tabbed-suggest-detail" });
 	}
 

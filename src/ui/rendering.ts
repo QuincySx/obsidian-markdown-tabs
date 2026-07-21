@@ -25,15 +25,15 @@ export async function renderTabs(
 	const child = new MarkdownRenderChild(container);
 	ctx.addChild(child);
 
-	const divMain = container.createEl("div", { cls: "md-tabbed" });
+	const divMain = container.createDiv({ cls: "md-tabbed" });
 
 	if (tabs.preamble) {
-		const preambleEl = divMain.createEl("div", { cls: "md-tabbed-preamble" });
+		const preambleEl = divMain.createDiv({ cls: "md-tabbed-preamble" });
 		await MarkdownRenderer.render(app, tabs.preamble, preambleEl, ctx.sourcePath, child);
 	}
 
-	const divTabs = divMain.createEl("div", { cls: "md-tabbed-tabs" });
-	const divContent = divMain.createEl("div", { cls: "md-tabbed-content" });
+	const divTabs = divMain.createDiv({ cls: "md-tabbed-tabs" });
+	const divContent = divMain.createDiv({ cls: "md-tabbed-content" });
 
 	// --- 拖拽滚动：状态按渲染实例隔离；document 级监听保证元素外松开也能结束 ---
 	let dragging = false;
@@ -60,7 +60,7 @@ export async function renderTabs(
 		dragging = false;
 		// click 事件在 mouseup 之后同步派发，挪到下一拍再复位，
 		// 让 click 处理器能看到拖拽标记并抑制误切换
-		setTimeout(() => {
+		window.setTimeout(() => {
 			moved = false;
 		}, 0);
 	});
@@ -80,7 +80,7 @@ export async function renderTabs(
 		const tab = tabs.tabs.find((t) => t.id === id);
 		if (tab && !panes.has(id)) {
 			// 懒渲染：首次激活才渲染内容，避免在隐藏容器里量错尺寸
-			const pane = divContent.createEl("div", { cls: "md-tabbed-pane" });
+			const pane = divContent.createDiv({ cls: "md-tabbed-pane" });
 			panes.set(id, pane);
 			await MarkdownRenderer.render(app, tab.content, pane, ctx.sourcePath, child);
 		}
@@ -88,7 +88,7 @@ export async function renderTabs(
 
 	const labelRenders: Promise<void>[] = [];
 	for (const tab of tabs.tabs) {
-		const divTab = divTabs.createEl("div", { cls: "md-tabbed-tab" });
+		const divTab = divTabs.createDiv({ cls: "md-tabbed-tab" });
 		divTab.dataset.tabId = String(tab.id);
 		if (tab.id === activeId) divTab.classList.add("md-tabbed-active");
 		divTab.addEventListener("click", () => {
@@ -111,7 +111,7 @@ export function renderCodeBlock(
 	const pre = container.createEl("pre", { cls: "md-tabbed-fallback" });
 	const code = pre.createEl("code", { cls: `language-${language}` });
 	code.appendText(source);
-	container.createEl("div", {
+	container.createDiv({
 		cls: "md-tabbed-hint",
 		text: "未识别到标签页。语法：---tab 标题 分隔标签页，---tab* 标题 设默认激活；或用命令 Insert tabs block 插入模板。",
 	});
