@@ -113,7 +113,7 @@ export function renderCodeBlock(
 	code.appendText(source);
 	container.createEl("div", {
 		cls: "md-tabbed-hint",
-		text: "未识别到标签页。语法：---tab 标题 分隔标签页，---tab* 标题 设默认激活。",
+		text: "未识别到标签页。语法：---tab 标题 分隔标签页，---tab* 标题 设默认激活；或用命令 Insert tabs block 插入模板。",
 	});
 	return pre;
 }
