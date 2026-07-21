@@ -1,5 +1,59 @@
 # Tabbed Blocks
 
+Show Markdown content in switchable tabs inside Obsidian's reading view.
+
+## Usage
+
+Write a `tabs` code block in a note and separate tabs with `---tab Title`; use `---tab* Title` for the tab that is active by default:
+
+````markdown
+```tabs
+---tab Notes
+The first tab's content, with full **Markdown** support.
+
+---tab* Code
+The default-active tab:
+
+\```js
+console.log("hello");
+\```
+
+---tab Table
+| A | B |
+|---|---|
+| 1 | 2 |
+```
+````
+
+You don't need to memorize the syntax:
+
+- Run **"Insert tabs block"** from the command palette to insert a complete template
+- Typing `---` inside a `tabs` block suggests `---tab` / `---tab*`
+- If no tab is recognized, a syntax hint is shown right below the block
+
+Features:
+
+- **Lazy rendering**: tab content renders only when first activated — diagrams and code highlighting never mis-measure inside hidden containers
+- **Drag to scroll**: when tabs overflow, hold and drag horizontally (dragging never triggers an accidental tab switch)
+- Text before the first `---tab` is shown above the tabs as a preamble
+
+## Installation
+
+Copy `main.js`, `manifest.json`, `styles.css` into `<vault>/.obsidian/plugins/tabbed-blocks/` and enable the plugin in Settings → Community plugins. Or install via BRAT with the repository `QuincySx/obsidian-markdown-tabs`.
+
+## Development
+
+```
+npm install
+npm run dev    # watch build
+npm run build  # type check + production build
+npm test       # parser tests
+```
+
+---
+
+# Tabbed Blocks（中文）
+
 在 Obsidian 阅读模式中用标签页（tabs）展示 Markdown 内容。
 
 ## 用法
@@ -41,11 +95,6 @@ console.log("hello");
 
 把 `main.js`、`manifest.json`、`styles.css` 复制到 `<库>/.obsidian/plugins/tabbed-blocks/`，在设置中启用。
 
-## 开发
+## License
 
-```
-npm install
-npm run dev    # watch 构建
-npm run build  # 类型检查 + 生产构建
-npm test       # 解析器测试
-```
+MIT
