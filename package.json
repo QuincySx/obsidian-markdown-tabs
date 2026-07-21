@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-markdown-tabs",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Adds tabbed markdown support to Obsidian",
 	"main": "main.js",
 	"scripts": {

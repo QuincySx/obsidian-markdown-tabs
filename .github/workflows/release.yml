@@ -27,9 +27,9 @@ jobs:
 
       - name: Package files
         run: |
-          mkdir markdown-tabs
-          cp main.js manifest.json styles.css markdown-tabs/
-          zip -r release.zip markdown-tabs
+          mkdir tabbed-blocks
+          cp main.js manifest.json styles.css tabbed-blocks/
+          zip -r release.zip tabbed-blocks
 
       - name: Create release
         env:

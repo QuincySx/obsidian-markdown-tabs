@@ -1,4 +1,4 @@
-# Markdown Tabs
+# Tabbed Blocks
 
 在 Obsidian 阅读模式中用标签页（tabs）展示 Markdown 内容。
 
@@ -39,7 +39,7 @@ console.log("hello");
 
 ## 安装
 
-把 `main.js`、`manifest.json`、`styles.css` 复制到 `<库>/.obsidian/plugins/markdown-tabs/`，在设置中启用。
+把 `main.js`、`manifest.json`、`styles.css` 复制到 `<库>/.obsidian/plugins/tabbed-blocks/`，在设置中启用。
 
 ## 开发
 
