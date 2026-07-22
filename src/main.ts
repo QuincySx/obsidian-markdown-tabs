@@ -2,6 +2,14 @@ import { Plugin } from "obsidian";
 import { parseTabs } from "./util/parsing";
 import { renderTabs } from "./ui/rendering";
 import { TabSuggest } from "./ui/suggest";
+import { MDTabbedSettingTab } from "./ui/settingTab";
+import {
+	applyTabStyle,
+	clearTabStyle,
+	DEFAULT_SETTINGS,
+	MDTabbedSettings,
+	resolveParams,
+} from "./settings";
 
 const TABS_TEMPLATE = [
 	"```tabs",
@@ -15,7 +23,13 @@ const TABS_TEMPLATE = [
 ].join("\n");
 
 export default class MDTabbedPlugin extends Plugin {
-	onload() {
+	settings: MDTabbedSettings = DEFAULT_SETTINGS;
+
+	async onload() {
+		await this.loadSettings();
+		applyTabStyle(resolveParams(this.settings));
+		this.addSettingTab(new MDTabbedSettingTab(this.app, this));
+
 		this.registerMarkdownCodeBlockProcessor(
 			"tabs",
 			async (source, el, ctx) => {
@@ -34,5 +48,21 @@ export default class MDTabbedPlugin extends Plugin {
 				editor.replaceSelection(TABS_TEMPLATE);
 			},
 		});
+	}
+
+	onunload() {
+		clearTabStyle();
+	}
+
+	async loadSettings() {
+		const data = (await this.loadData()) as Partial<MDTabbedSettings> | null;
+		this.settings = Object.assign({}, DEFAULT_SETTINGS, data);
+		// custom 需深合并：旧版本存档可能缺少后加的参数
+		this.settings.custom = Object.assign({}, DEFAULT_SETTINGS.custom, data?.custom);
+	}
+
+	async saveSettings() {
+		await this.saveData(this.settings);
+		applyTabStyle(resolveParams(this.settings));
 	}
 }

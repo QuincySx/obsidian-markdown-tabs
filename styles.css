@@ -10,7 +10,14 @@ body {
 	--tab-border-width: var(--border-width); /* 边框宽度 */
 	--tab-border-radius: var(--radius-m); /* 选项卡的边角圆度 */
 	--tab-padding: var(--size-4-3) var(--size-4-5); /* 选项卡的内边距 */
+	--tab-content-padding: var(--tab-padding); /* 内容区域的内边距 */
+	--tab-gap: 0px; /* 选项卡之间的间距 */
+	--tab-block-gap: var(--size-4-4); /* 连续 tabs 块之间的垂直间距 */
 	--tab-font-size: var(--size-4-4); /* 文字大小 */
+}
+
+.md-tabbed {
+	margin-bottom: var(--tab-block-gap);
 }
 
 .md-tabbed-tabs {
@@ -56,6 +63,17 @@ body {
 	border-top-right-radius: var(--tab-border-radius);
 }
 
+/* 标签间距 > 0 时的分离式外观：每个 tab 完整边框、两侧上角圆润 */
+body.md-tabbed-has-gap .md-tabbed-tabs {
+	gap: var(--tab-gap);
+}
+
+body.md-tabbed-has-gap .md-tabbed-tab {
+	border-left: var(--tab-border-width) solid var(--tab-border-color);
+	border-top-left-radius: var(--tab-border-radius);
+	border-top-right-radius: var(--tab-border-radius);
+}
+
 .md-tabbed-tab p {
 	margin-top: var(--size-4-1);
 	margin-bottom: var(--size-4-1);
@@ -71,7 +89,7 @@ body {
 
 .md-tabbed-content {
 	margin-top: -1px;
-	padding: var(--tab-padding);
+	padding: var(--tab-content-padding);
 	background-color: var(--tab-content-background);
 	color: var(--tab-content-color);
 	border: var(--tab-border-width) solid var(--tab-border-color);
